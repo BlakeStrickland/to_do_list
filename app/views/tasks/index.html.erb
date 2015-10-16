@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-5 col-md-offset-4 sortable">
     <% if @tasks.any? %>
@@ -6,6 +7,7 @@
     <p>No tasks found </p>
     <% end %>
   </div>
-  <%= link_to "Create Task", new_task_path, remote: true %>
-  <div id="new-task-form"></div>
+  <%= link_to "Create Task", new_task_path, remote: true%>
+  <div class="new-task-form">
+  </div>
 </div>
