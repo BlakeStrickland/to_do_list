@@ -10,6 +10,13 @@ class TasksController < ApplicationController
   def show
   end
 
+  def sort
+    params[:order].each do |key,value|
+      Task.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
   # GET /tasks/new
   def new
     @task = Task.new
