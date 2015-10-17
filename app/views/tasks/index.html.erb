@@ -1,13 +1,25 @@
+<h1>To do list</h1>
 
+<%= link_to "Create Task", new_task_path, id: "new_link", remote: true%>
+
+<h2>Incomeplete Tasks</h2>
 <div class="row">
-  <div class="col-md-5 col-md-offset-4 sortable">
+  <div class="col-md-5 col-md-offset-4 sortable" id="incomplete_tasks">
     <% if @tasks.any? %>
-        <%= render @tasks %>
+      <%= render @incomplete_tasks %>
     <% else %>
-    <p>No tasks found </p>
+      <p>No tasks found </p>
     <% end %>
   </div>
-  <%= link_to "Create Task", new_task_path, remote: true%>
-  <div class="new-task-form">
+</div>
+
+<h2>Comeplete Tasks</h2>
+<div class="row">
+  <div class="col-md-5 col-md-offset-4 sortable" id="complete_tasks">
+    <% if @tasks.any? %>
+      <%= render @complete_tasks %>
+    <% else %>
+      <p>No completed tasks yet </p>
+    <% end %>
   </div>
 </div>

@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     @tasks = Task.order("priority")
+    @incomplete_tasks = Task.where(complete: false)
+    @complete_tasks = Task.where(complete: true)
   end
 
   # GET /tasks/1
@@ -60,6 +62,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:description, :due_on, :priority)
+      params.require(:task).permit(:description, :due_on, :priority, :complete)
     end
 end
