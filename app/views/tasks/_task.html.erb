@@ -1,7 +1,7 @@
+<div class="panel panel-default" data-priority=" <%= task.priority %>" data-id="<%= task.id %>">
 
   <%= form_for task, remote: true do |f| %>
-    <div class="panel panel-default" data-priority=" <%= task.priority %>" data-id="<%= task.id %>">
       <%= f.check_box :complete %>
       <%= f.label :complete, task.description %>
-    </div>
   <% end %>
+</div>
