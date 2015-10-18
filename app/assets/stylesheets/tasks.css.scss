@@ -1,14 +1,46 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.sortable-placeholder {
-  border: 1px dashed #CCC;
-  background-color: #f9f9f9;
-  height: 80px;
-  margin-bottom: 10px;
+body {
+  margin: 0px;
+  padding: 0px;
+  background: url('brick.png');
+  font-size: 18px;
+  font-family: $verdana;
+}
+h2{
+  text-align: center;
+}
+#header {
+  background-color: #676561;
+  color: #FFF;
+  padding: 15px 100px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  @include linear-gradient(#777, #444);
 }
 
-.sortable {
-  display: list-item;
+#new_link {
+  @include button(shiny, #ff0000);
+}
+.submit_class_name{
+  @include button(shiny, #ff0000);
+}
+#thing {
+  background-color: #FFF;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-radius: 30px;
+}
+
+#incomplete_tasks{
+color: red;
+}
+
+#complete_tasks{
+
 }
