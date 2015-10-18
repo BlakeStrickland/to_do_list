@@ -1,4 +1,19 @@
 <%= form_for @task, remote: true do |f| %>
-  <%= f.text_field :description %>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :complete %><br>
+    <%= f.check_box :complete %>
+  </div>
+  <div class="field">
+    <%= f.label :due_on %><br>
+    <%= f.date_select :due_on %>
+  </div>
   <%= f.submit %>
 <% end %>

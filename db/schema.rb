@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151017173951) do
 
-
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
     t.date     "due_on"
