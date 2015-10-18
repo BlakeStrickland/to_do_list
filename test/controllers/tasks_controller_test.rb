@@ -9,6 +9,7 @@ class TasksControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tasks)
+    assert_select 'form'
   end
 
   test "should get new" do
@@ -31,11 +32,6 @@ class TasksControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @task
-    assert_response :success
-  end
-
-  test "should update task" do
-    patch :update, id: @task, task: { description: @task.description, due_on: @task.due_on }
     assert_response :success
   end
 
