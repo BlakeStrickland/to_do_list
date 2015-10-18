@@ -1,13 +1,13 @@
+<h1>Check List</h1>
 
-<div class="row">
-  <div class="col-md-5 col-md-offset-4 sortable">
-    <% if @tasks.any? %>
-        <%= render @tasks %>
-    <% else %>
-    <p>No tasks found </p>
-    <% end %>
-  </div>
-  <%= link_to "Create Task", new_task_path, remote: true%>
-  <div class="new-task-form">
-  </div>
+<%= link_to "New Task", new_task_path, id: "new_link", remote: true %>
+
+<h2>Incomplete Tasks</h2>
+<div class="tasks" id="incomplete_tasks">
+  <%= render @incomplete_tasks %>
+</div>
+
+<h2>Complete Tasks</h2>
+<div class="tasks" id="complete_tasks">
+  <%= render @complete_tasks %>
 </div>

@@ -1,9 +1,5 @@
-<div class="panel panel-default" data-priority="<%=task.priority%>" data-id="<%=task.id%>">
-  <div class="panel-heading">
-    <h3 class="panel-title individual"> <%= task.description %></h3>
-  </div>
-  <div class="panel-body">
-    <%= task.due_on %> <%= link_to 'Edit', edit_task_path(task) %>
-
-  </div>
-</div>
+<%= form_for task, remote: true do |f| %>
+  <%= f.check_box :complete %>
+  <%= f.label :complete, task.description %>
+  <%= link_to "(remove)", task, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+<% end %>
