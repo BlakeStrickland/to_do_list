@@ -4,13 +4,8 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     @tasks = Task.all
-  end
-
-  def sort
-    params[:order].each do |key,value|
-      Task.find(value[:id]).update_attribute(:priority,value[:position])
-    end
-    render :nothing => true
+    @incomplete_tasks = Task.where(complete: false)
+    @complete_tasks = Task.where(complete: true)
   end
 
   # GET /tasks/1
@@ -31,16 +26,31 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to @task }
+        format.js
+      end
     else
       render :new
     end
   end
 
+
+  def sort
+    params[:order].each do |key,value|
+      Task.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
+
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @task }
+        format.js
+      end
     else
       render :edit
     end
@@ -48,8 +58,12 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   def destroy
-    @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    if @task.destroy
+      respond_to do |format|
+        format.html { redirect_to @task }
+        format.js
+      end
+    end
   end
 
   private
@@ -60,6 +74,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:description, :due_on, :priority)
+      params.require(:task).permit(:name, :description, :priority, :complete, :due_on)
     end
 end

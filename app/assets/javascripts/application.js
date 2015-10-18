@@ -20,11 +20,3 @@ function active_sortable(){
 }
 
 $(active_sortable)
-
-$( ".sortable" ).on( "sortupdate", function() {
-  var positions = []
-  $(".individual").each(function(){
-
-  })
-
-} );
