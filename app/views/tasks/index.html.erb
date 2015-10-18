@@ -3,11 +3,19 @@
 <%= link_to "New Task", new_task_path, id: "new_link", remote: true %>
 
 <h2>Incomplete Tasks</h2>
-<div class="tasks" id="incomplete_tasks">
-  <%= render @incomplete_tasks %>
+  <div class="col-md-5 col-md-offset-4 sortable" id="incomplete_tasks">
+  <% if @tasks.any? %>
+    <%= render @incomplete_tasks %>
+  <% else %>
+    <p>Computer an boxers kinda day</p>
+  <% end %>
 </div>
 
 <h2>Complete Tasks</h2>
-<div class="tasks" id="complete_tasks">
-  <%= render @complete_tasks %>
+<div class="col-md-5 col-md-offset-4 sortable" id="complete_tasks">
+  <% if @tasks.any? %>
+    <%= render @complete_tasks %>
+  <% else %>
+    <p>GET TO IT</p>
+  <% end %>
 </div>
