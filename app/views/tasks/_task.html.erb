@@ -3,8 +3,10 @@
 
   <%= form_for task, remote: true do |f| %>
       <%= f.check_box :complete %>
-      <%= f.label :complete, task.description %>
+      Task:<%= f.label :complete, task.description %>
+      --||-- Due:<%= f.label :complete, task.due_on %>
       <%= link_to "(remove)", task, method: :delete, remote: true %>
+
   <% end %>
 
 </div>

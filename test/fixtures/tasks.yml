@@ -9,3 +9,5 @@ one:
 two:
   description: MyString
   due_on: 2015-10-16
+  priority: 1
+  complete: false
