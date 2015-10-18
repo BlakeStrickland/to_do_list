@@ -1,0 +1,79 @@
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-4 sortable">
+    <% if @tasks.any? %>
+        <%= render @tasks %>
+    <% else %>
+    <p>No tasks found </p>
+    <% end %>
+  </div>
+  <%= link_to "Create Task", new_task_path, remote: true%>
+  <div class="new-task-form">
+  </div>
+</div>
+====================================
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :due_on %><br>
+    <%= f.date_select :due_on %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+================================
+
+def create
+  @task = Task.new(task_params)
+
+  if @task.save
+    redirect_to @task, notice: 'Task was successfully created.'
+  else
+    render :new
+  end
+end
+
+def update
+  if @task.update(task_params)
+    redirect_to @task, notice: 'Task was successfully updated.'
+  else
+    render :edit
+  end
+end
+==================================
+<div class="panel panel-default" data-priority="<%=task.priority%>" data-id="<%=task.id%>">
+  <div class="panel-heading">
+    <h3 class="panel-title individual"> <%= task.description %></h3>
+  </div>
+  <div class="panel-body">
+    <%= task.due_on %> <%= link_to 'Edit', edit_task_path(task) %>
+
+  </div>
+</div>
+
+==================================
+def update
+  @task = Task.find(params[:id])
+  @task.update_attributes!(params[:task])
+  redirect_to tasks_url
+end
