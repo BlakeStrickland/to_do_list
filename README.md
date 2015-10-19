@@ -12,4 +12,4 @@ When completed with a task just click the checkbox and it will automatically mov
 
 
 ERD:
-https://www.lucidchart.com/invitations/accept/9135974e-4e10-4823-9dde-c5a27f5c216a
+https://www.lucidchart.com/invitations/accept/b9f6ab8c-5d52-4596-8aeb-86e6663148cf
